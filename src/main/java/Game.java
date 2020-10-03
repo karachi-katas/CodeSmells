@@ -1,3 +1,7 @@
+import exceptions.InvalidFirstPlayerException;
+import exceptions.InvalidPositionException;
+import exceptions.InvalidSecondPlayerException;
+
 public class Game {
     private char _lastSymbol = ' ';
     private Board _board = new Board();
@@ -15,16 +19,16 @@ public class Game {
         if (_lastSymbol == ' ') {
             //if player is X
             if (symbol == 'O') {
-                throw new Exception("Invalid first player");
+                throw new InvalidFirstPlayerException();
             }
         }
         //if not first move but player repeated
         else if (symbol == _lastSymbol) {
-            throw new Exception("Invalid next player");
+            throw new InvalidSecondPlayerException();
         }
         //if not first move but play on an already played tile
         else if (_board.TileAt(x, y).Symbol != ' ') {
-            throw new Exception("Invalid position");
+            throw new InvalidPositionException();
         }
     }
 
