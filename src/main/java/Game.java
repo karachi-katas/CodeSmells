@@ -3,6 +3,16 @@ public class Game {
     private Board board = new Board();
 
     public void Play(char symbol, int x, int y) throws Exception {
+        guardAgainstInvalidMove(symbol, x, y);
+        updateGameState(symbol, x, y);
+    }
+
+    private void updateGameState(char symbol, int x, int y) {
+        lastSymbol = symbol;
+        board.AddTileAt(symbol, x, y);
+    }
+
+    private void guardAgainstInvalidMove(char symbol, int x, int y) throws Exception {
         if (playerOTakesFirstTurn(symbol)) {
             throw new Exception("Invalid first player");
         }
@@ -12,10 +22,6 @@ public class Game {
         else if (tileAlreadyTaken(x, y)) {
             throw new Exception("Invalid position");
         }
-
-        // update game state
-        lastSymbol = symbol;
-        board.AddTileAt(symbol, x, y);
     }
 
     private boolean tileAlreadyTaken(int x, int y) {
