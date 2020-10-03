@@ -127,4 +127,15 @@ public class Game_Should {
 
         assertEquals('O', winner);
     }
+
+    @Test
+    public void DeclareDraw() throws Exception
+    {
+        game.Play('X', 0, 0);
+        game.Play('O', 2, 0);
+        game.Play('X', 1, 0);
+
+        char winner = game.Winner();
+        assertEquals(' ', winner);
+    }
 }
