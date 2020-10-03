@@ -25,20 +25,11 @@ public class Game {
     }
 
     public char Winner() {
-        //if the positions in first row are taken
-        if (rowHasSameSymbol(0)) {
-                return board.TileAt(0, 0).symbol;
+        for (int row = 0; row <= 2; row++) {
+            if (rowHasSameSymbol(row)) {
+                return board.TileAt(row, 0).symbol;
+            }
         }
-
-        //if the positions in first row are taken
-        if (rowHasSameSymbol(1)) {
-                return board.TileAt(1, 0).symbol;
-            }
-
-        //if the positions in first row are taken
-        if (rowHasSameSymbol(2)) {
-                return board.TileAt(2, 0).symbol;
-            }
 
         return ' ';
     }
