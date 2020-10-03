@@ -16,16 +16,12 @@ public class Game {
         if (playerOTakesFirstTurn(symbol)) {
             throw new Exception("Invalid first player");
         }
-        else if (playerRepeatsTurn(symbol)) {
+        if (playerRepeatsTurn(symbol)) {
             throw new Exception("Invalid next player");
         }
-        else if (tileAlreadyTaken(x, y)) {
+        if (board.tileAlreadyTaken(x, y)) {
             throw new Exception("Invalid position");
         }
-    }
-
-    private boolean tileAlreadyTaken(int x, int y) {
-        return board.tileAt(x, y).isTaken();
     }
 
     private boolean playerOTakesFirstTurn(char symbol) {
