@@ -4,8 +4,7 @@ import exceptions.ConsecutivePlayException;
 
 
 public class Game {
-    private char _lastSymbol = ' ';
-    private Marker marker;
+    private Marker marker = Marker.EMPTY;
     private Board _board = new Board();
 
     public void Play(char symbol, int x, int y) throws Exception {
@@ -13,7 +12,7 @@ public class Game {
         checkForInvalidMove(symbol, position);
 
         // update game state
-        _lastSymbol = symbol;
+        marker = Marker.from(symbol);
         _board.AddTileAt(symbol, position);
     }
 
@@ -33,13 +32,13 @@ public class Game {
     }
 
     private void repeatedMove(char symbol) throws ConsecutivePlayException {
-        if (symbol == _lastSymbol) {
+        if (symbol == marker.marker) {
             throw new ConsecutivePlayException();
         }
     }
 
     private void firstPlayerIsO(char symbol) throws InvalidFirstPlayerException {
-        if (_lastSymbol == Marker.EMPTY.marker) {
+        if (marker == Marker.EMPTY) {
             //if player is X
             if (symbol == Marker.NOUGHT.marker) {
                 throw new InvalidFirstPlayerException();
