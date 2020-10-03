@@ -10,12 +10,8 @@ public class Tile {
         this.column = column;
     }
 
-    public boolean isEmpty() {
-        return this.symbol == Symbol.NONE;
-    }
-
     public boolean isTaken() {
-        return !this.isEmpty();
+        return this.symbol != Symbol.NONE;
     }
 
     public boolean isAt(int row, int column) {

@@ -28,7 +28,6 @@ public class Board
     }
 
     public void addTileAt(int row, int column, char symbol) {
-//        tileAt(row,column).symbol = symbol;
         tileAt(row,column).symbol = Symbol.from(symbol);
 
     }
