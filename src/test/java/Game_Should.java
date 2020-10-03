@@ -1,3 +1,6 @@
+import exceptions.InvalidFirstPlayerException;
+import exceptions.InvalidPositionException;
+import exceptions.ConsecutivePlayException;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -11,12 +14,12 @@ public class Game_Should {
         game = new Game();
     }
 
-    @Test(expected=Exception.class)
+    @Test(expected= InvalidFirstPlayerException.class)
     public void NotAllowPlayerOToPlayFirst() throws Exception {
         game.Play('O', 0, 0);
     }
 
-    @Test(expected=Exception.class)
+    @Test(expected= ConsecutivePlayException.class)
     public void NotAllowPlayerXToPlayTwiceInARow() throws Exception
     {
         game.Play('X', 0, 0);
@@ -24,7 +27,7 @@ public class Game_Should {
         game.Play('X', 1, 0);
     }
 
-    @Test(expected=Exception.class)
+    @Test(expected= InvalidPositionException.class)
     public void NotAllowPlayerToPlayInLastPlayedPosition() throws Exception
     {
         game.Play('X', 0, 0);

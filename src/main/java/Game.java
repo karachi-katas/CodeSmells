@@ -1,6 +1,6 @@
 import exceptions.InvalidFirstPlayerException;
 import exceptions.InvalidPositionException;
-import exceptions.InvalidSecondPlayerException;
+import exceptions.ConsecutivePlayException;
 
 public class Game {
     private char _lastSymbol = ' ';
@@ -24,7 +24,7 @@ public class Game {
         }
         //if not first move but player repeated
         else if (symbol == _lastSymbol) {
-            throw new InvalidSecondPlayerException();
+            throw new ConsecutivePlayException();
         }
         //if not first move but play on an already played tile
         else if (_board.TileAt(x, y).Symbol != ' ') {
