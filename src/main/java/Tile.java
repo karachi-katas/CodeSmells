@@ -8,4 +8,12 @@ public class Tile {
         this.x = x;
         this.y = y;
     }
+
+    public boolean isEmpty() {
+        return this.symbol == ' ';
+    }
+
+    public boolean isTaken() {
+        return !this.isEmpty();
+    }
 }

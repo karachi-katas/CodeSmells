@@ -25,7 +25,7 @@ public class Game {
     }
 
     private boolean tileAlreadyTaken(int x, int y) {
-        return board.TileAt(x, y).symbol != ' ';
+        return board.TileAt(x, y).isTaken();
     }
 
     private boolean playerOTakesFirstTurn(char symbol) {
@@ -46,7 +46,7 @@ public class Game {
 
     public char Winner() {
         for (int row = 0; row <= 2; row++) {
-            if (rowHasSameSymbol(row)) {
+            if (board.rowHasSameSymbol(row)) {
                 return board.TileAt(row, 0).symbol;
             }
         }
@@ -54,18 +54,5 @@ public class Game {
         return ' ';
     }
 
-    private boolean rowHasSameSymbol(int row) {
-        return isRowNotEmpty(row) &&
-               board.TileAt(row, 0).symbol ==
-               board.TileAt(row, 1).symbol &&
-               board.TileAt(row, 2).symbol ==
-               board.TileAt(row, 1).symbol;
-    }
-
-    private boolean isRowNotEmpty(int row) {
-        return board.TileAt(row, 0).symbol != ' ' &&
-               board.TileAt(row, 1).symbol != ' ' &&
-               board.TileAt(row, 2).symbol != ' ';
-    }
 }
 

@@ -31,4 +31,18 @@ public class Board
     {
         TileAt(x,y).symbol = symbol;
     }
+
+    public boolean rowHasSameSymbol(int row) {
+        return isRowNotEmpty(row) &&
+               TileAt(row, 0).symbol ==
+               TileAt(row, 1).symbol &&
+               TileAt(row, 2).symbol ==
+               TileAt(row, 1).symbol;
+    }
+
+    private boolean isRowNotEmpty(int row) {
+        return TileAt(row, 0).isTaken() &&
+                TileAt(row, 1).isTaken() &&
+                TileAt(row, 2).isTaken();
+    }
 }
