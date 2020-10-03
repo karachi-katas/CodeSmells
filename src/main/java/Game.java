@@ -29,17 +29,7 @@ public class Game {
     }
 
     public char Winner() {
-        //if the positions in first row are taken
-        if (_board.TileAt(0, 0).Symbol != ' ' &&
-                _board.TileAt(0, 1).Symbol != ' ' &&
-                _board.TileAt(0, 2).Symbol != ' ') {
-            //if first row is full with same symbol
-            if (_board.TileAt(0, 0).Symbol ==
-                    _board.TileAt(0, 1).Symbol &&
-                    _board.TileAt(0, 2).Symbol == _board.TileAt(0, 1).Symbol) {
-                return _board.TileAt(0, 0).Symbol;
-            }
-        }
+        if (checkWinnerForFirstRow()) return _board.TileAt(0, 0).Symbol;
 
         //if the positions in first row are taken
         if (_board.TileAt(1, 0).Symbol != ' ' &&
@@ -68,6 +58,21 @@ public class Game {
         }
 
         return ' ';
+    }
+
+    private boolean checkWinnerForFirstRow() {
+        //if the positions in first row are taken
+        if (_board.TileAt(0, 0).Symbol != ' ' &&
+                _board.TileAt(0, 1).Symbol != ' ' &&
+                _board.TileAt(0, 2).Symbol != ' ') {
+            //if first row is full with same symbol
+            if (_board.TileAt(0, 0).Symbol ==
+                    _board.TileAt(0, 1).Symbol &&
+                    _board.TileAt(0, 2).Symbol == _board.TileAt(0, 1).Symbol) {
+                return true;
+            }
+        }
+        return false;
     }
 }
 
