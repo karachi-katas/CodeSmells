@@ -9,7 +9,7 @@ public class Game {
 
     private void updateGameState(char symbol, int x, int y) {
         lastSymbol = symbol;
-        board.AddTileAt(symbol, x, y);
+        board.addTileAt(x, y, symbol);
     }
 
     private void guardAgainstInvalidMove(char symbol, int x, int y) throws Exception {
@@ -25,7 +25,7 @@ public class Game {
     }
 
     private boolean tileAlreadyTaken(int x, int y) {
-        return board.TileAt(x, y).isTaken();
+        return board.tileAt(x, y).isTaken();
     }
 
     private boolean playerOTakesFirstTurn(char symbol) {
@@ -45,13 +45,7 @@ public class Game {
     }
 
     public char Winner() {
-        for (int row = 0; row <= 2; row++) {
-            if (board.rowHasSameSymbol(row)) {
-                return board.TileAt(row, 0).symbol;
-            }
-        }
-
-        return ' ';
+        return board.getWinnerIfExists();
     }
 
 }

@@ -3,46 +3,55 @@ import java.util.List;
 
 public class Board
 {
-    private List<Tile> _plays = new ArrayList<>();
+    private List<Tile> plays = new ArrayList<>();
 
     public Board()
     {
-        for (int i = 0; i < 3; i++)
+        for (int row = 0; row < 3; row++)
         {
-            for (int j = 0; j < 3; j++)
+            for (int column = 0; column < 3; column++)
             {
-                Tile tile = new Tile(i, j);
-                _plays.add(tile);
+                Tile tile = new Tile(row, column);
+                plays.add(tile);
             }
         }
     }
 
-    public Tile TileAt(int x, int y)
+    public Tile tileAt(int x, int y)
     {
-        for (Tile t : _plays) {
-            if (t.x == x && t.y == y){
+        for (Tile t : plays) {
+            if (t.row == x && t.column == y){
                 return t;
             }
         }
         return null;
     }
 
-    public void AddTileAt(char symbol, int x, int y)
-    {
-        TileAt(x,y).symbol = symbol;
+    public void addTileAt(int row, int column, char symbol) {
+        tileAt(row,column).symbol = symbol;
     }
 
-    public boolean rowHasSameSymbol(int row) {
+    public boolean hasSameSymbolIn(int row) {
         return isRowNotEmpty(row) &&
-               TileAt(row, 0).symbol ==
-               TileAt(row, 1).symbol &&
-               TileAt(row, 2).symbol ==
-               TileAt(row, 1).symbol;
+               tileAt(row, 0).symbol ==
+               tileAt(row, 1).symbol &&
+               tileAt(row, 2).symbol ==
+               tileAt(row, 1).symbol;
     }
 
     private boolean isRowNotEmpty(int row) {
-        return TileAt(row, 0).isTaken() &&
-                TileAt(row, 1).isTaken() &&
-                TileAt(row, 2).isTaken();
+        return tileAt(row, 0).isTaken() &&
+                tileAt(row, 1).isTaken() &&
+                tileAt(row, 2).isTaken();
+    }
+
+    public char getWinnerIfExists() {
+        for (int row = 0; row < 3; row++) {
+            if (hasSameSymbolIn(row)) {
+                return tileAt(row, 0).symbol;
+            }
+        }
+
+        return ' ';
     }
 }
