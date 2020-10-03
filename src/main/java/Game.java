@@ -26,44 +26,43 @@ public class Game {
 
     public char Winner() {
         //if the positions in first row are taken
-        if (board.TileAt(0, 0).symbol != ' ' &&
-            board.TileAt(0, 1).symbol != ' ' &&
-            board.TileAt(0, 2).symbol != ' ') {
+        if (isRowNotEmpty(0)) {
             //if first row is full with same symbol
-            if (board.TileAt(0, 0).symbol ==
-                board.TileAt(0, 1).symbol &&
-                board.TileAt(0, 2).symbol == board.TileAt(0, 1).symbol) {
+            if (rowHasSameSymbol(0)) {
                 return board.TileAt(0, 0).symbol;
             }
         }
 
         //if the positions in first row are taken
-        if (board.TileAt(1, 0).symbol != ' ' &&
-            board.TileAt(1, 1).symbol != ' ' &&
-            board.TileAt(1, 2).symbol != ' ') {
+        if (isRowNotEmpty(1)) {
             //if middle row is full with same symbol
-            if (board.TileAt(1, 0).symbol ==
-                board.TileAt(1, 1).symbol &&
-                board.TileAt(1, 2).symbol ==
-                board.TileAt(1, 1).symbol) {
+            if (rowHasSameSymbol(1)) {
                 return board.TileAt(1, 0).symbol;
             }
         }
 
         //if the positions in first row are taken
-        if (board.TileAt(2, 0).symbol != ' ' &&
-            board.TileAt(2, 1).symbol != ' ' &&
-            board.TileAt(2, 2).symbol != ' ') {
+        if (isRowNotEmpty(2)) {
             //if middle row is full with same symbol
-            if (board.TileAt(2, 0).symbol ==
-                board.TileAt(2, 1).symbol &&
-                board.TileAt(2, 2).symbol ==
-                board.TileAt(2, 1).symbol) {
+            if (rowHasSameSymbol(2)) {
                 return board.TileAt(2, 0).symbol;
             }
         }
 
         return ' ';
+    }
+
+    private boolean rowHasSameSymbol(int row) {
+        return board.TileAt(row, 0).symbol ==
+               board.TileAt(row, 1).symbol &&
+               board.TileAt(row, 2).symbol ==
+               board.TileAt(row, 1).symbol;
+    }
+
+    private boolean isRowNotEmpty(int row) {
+        return board.TileAt(row, 0).symbol != ' ' &&
+               board.TileAt(row, 1).symbol != ' ' &&
+               board.TileAt(row, 2).symbol != ' ';
     }
 }
 
