@@ -5,6 +5,7 @@ import exceptions.ConsecutivePlayException;
 
 public class Game {
     private char _lastSymbol = ' ';
+    private Marker marker;
     private Board _board = new Board();
 
     public void Play(char symbol, int x, int y) throws Exception {
@@ -26,7 +27,7 @@ public class Game {
     }
 
     private void invalidPosition(Position position) throws InvalidPositionException {
-        if (_board.TileAt(position).Symbol != ' ') {
+        if (_board.TileAt(position).Symbol != Marker.EMPTY.marker) {
             throw new InvalidPositionException();
         }
     }
@@ -38,9 +39,9 @@ public class Game {
     }
 
     private void firstPlayerIsO(char symbol) throws InvalidFirstPlayerException {
-        if (_lastSymbol == ' ') {
+        if (_lastSymbol == Marker.EMPTY.marker) {
             //if player is X
-            if (symbol == 'O') {
+            if (symbol == Marker.NOUGHT.marker) {
                 throw new InvalidFirstPlayerException();
             }
         }

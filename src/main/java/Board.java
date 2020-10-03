@@ -22,12 +22,8 @@ public class Board
 
     public Tile TileAt(int x, int y)
     {
-        for (Tile t : _plays) {
-            if (t.X == x && t.Y == y){
-                return t;
-            }
-        }
-        return null;
+        Position position = new Position(x, y);
+        return TileAt(position);
     }
 
     public Tile TileAt(Position position)
