@@ -86,4 +86,12 @@ public class Board
         }
         return false;
     }
+
+    char winningChecks() {
+        if (checkWinnerForFirstRow()) return TileAt(0, 0).Symbol;
+        if (checkWinnerForMiddleRow()) return TileAt(1, 0).Symbol;
+        if (checkWinnerForLastRow()) return TileAt(2, 0).Symbol;
+
+        return ' ';
+    }
 }

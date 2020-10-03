@@ -29,11 +29,7 @@ public class Game {
     }
 
     public char Winner() {
-        if (_board.checkWinnerForFirstRow()) return _board.TileAt(0, 0).Symbol;
-        if (_board.checkWinnerForMiddleRow()) return _board.TileAt(1, 0).Symbol;
-        if (_board.checkWinnerForLastRow()) return _board.TileAt(2, 0).Symbol;
-
-        return ' ';
+        return _board.winningChecks();
     }
 
 }
