@@ -40,14 +40,14 @@ public class Board
         return null;
     }
 
-    public void AddTileAt(char symbol, int x, int y)
+    public void AddTileAt(char symbol, Position position)
     {
         Tile newTile = new Tile();
-        newTile.X = x;
-        newTile.Y = y;
+        newTile.X = position.row;
+        newTile.Y = position.col;
         newTile.Symbol = symbol;
 
-        TileAt(x,y).Symbol = symbol;
+        TileAt(position).Symbol = symbol;
     }
 
     boolean checkWinnerForLastRow() {

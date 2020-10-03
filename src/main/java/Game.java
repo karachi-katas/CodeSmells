@@ -13,7 +13,7 @@ public class Game {
 
         // update game state
         _lastSymbol = symbol;
-        _board.AddTileAt(symbol, x, y);
+        _board.AddTileAt(symbol, position);
     }
 
     private void checkForInvalidMove(char symbol, Position position) throws Exception {
