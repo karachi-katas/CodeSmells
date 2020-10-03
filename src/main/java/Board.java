@@ -39,4 +39,51 @@ public class Board
 
         TileAt(x,y).Symbol = symbol;
     }
+
+    boolean checkWinnerForLastRow() {
+        //if the positions in first row are taken
+        if (TileAt(2, 0).Symbol != ' ' &&
+                TileAt(2, 1).Symbol != ' ' &&
+                TileAt(2, 2).Symbol != ' ') {
+            //if middle row is full with same symbol
+            if (TileAt(2, 0).Symbol ==
+                    TileAt(2, 1).Symbol &&
+                    TileAt(2, 2).Symbol ==
+                            TileAt(2, 1).Symbol) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    boolean checkWinnerForMiddleRow() {
+        //if the positions in first row are taken
+        if (TileAt(1, 0).Symbol != ' ' &&
+                TileAt(1, 1).Symbol != ' ' &&
+                TileAt(1, 2).Symbol != ' ') {
+            //if middle row is full with same symbol
+            if (TileAt(1, 0).Symbol ==
+                    TileAt(1, 1).Symbol &&
+                    TileAt(1, 2).Symbol ==
+                            TileAt(1, 1).Symbol) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    boolean checkWinnerForFirstRow() {
+        //if the positions in first row are taken
+        if (TileAt(0, 0).Symbol != ' ' &&
+                TileAt(0, 1).Symbol != ' ' &&
+                TileAt(0, 2).Symbol != ' ') {
+            //if first row is full with same symbol
+            if (TileAt(0, 0).Symbol ==
+                    TileAt(0, 1).Symbol &&
+                    TileAt(0, 2).Symbol == TileAt(0, 1).Symbol) {
+                return true;
+            }
+        }
+        return false;
+    }
 }
