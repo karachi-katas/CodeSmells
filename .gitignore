@@ -5,8 +5,9 @@ project.lock.json
 *.pyc
 nupkg/
 
-# Visual Studio Code
+# Visual Studio Code / IntelliJ
 .vscode
+.idea
 
 # User-specific files
 *.suo

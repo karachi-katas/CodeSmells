@@ -2,7 +2,6 @@ import exceptions.InvalidFirstPlayerException;
 import exceptions.InvalidPositionException;
 import exceptions.ConsecutivePlayException;
 
-import java.security.PrivateKey;
 
 public class Game {
     private char _lastSymbol = ' ';
@@ -27,7 +26,7 @@ public class Game {
     }
 
     private void invalidPosition(Position position) throws InvalidPositionException {
-        if (_board.TileAt(position.row, position.col).Symbol != ' ') {
+        if (_board.TileAt(position).Symbol != ' ') {
             throw new InvalidPositionException();
         }
     }

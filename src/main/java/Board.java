@@ -30,6 +30,16 @@ public class Board
         return null;
     }
 
+    public Tile TileAt(Position position)
+    {
+        for (Tile t : _plays) {
+            if (t.X == position.row && t.Y == position.col){
+                return t;
+            }
+        }
+        return null;
+    }
+
     public void AddTileAt(char symbol, int x, int y)
     {
         Tile newTile = new Tile();
